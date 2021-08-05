@@ -1,0 +1,25 @@
+{
+  "name": "pesquisa",
+  "version": "1.0.0",
+  "repository": "https://github.com/ErickCristhian/pesquisa.git",
+  "author": "Erick Cristhian",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "mysql2": "^2.2.5",
+    "node-datetime": "^2.1.2",
+    "sequelize": "^6.6.5",
+    "xlsx": "^0.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "sequelize-cli": "^6.2.0"
+  }
+}
