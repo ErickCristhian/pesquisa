@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { Container } from 'reactstrap';
+import { Container, Button } from 'reactstrap';
 
+import { Link } from 'react-router-dom';
 import api from '../../../services/api';
 import { useHistory, useParams } from 'react-router-dom';
 import Header from '../../../components/Header';
@@ -22,66 +23,72 @@ function View() {
   return (
       <>
         <Header/>
+	<div className="back-button">
+            <Link to="/1">
+                <Button color="danger">Voltar para Tela Principal</Button>
+            </Link>
+        </div>
+
         <h1 className="text-center">Registro</h1>
         <Container className="d-flex justify-content-center row">
             <div>
-                <p>Gestão: {ata?.gestao}</p>
+                <p><b>Gestão:</b> {ata?.gestao}</p>
             </div>
             <br/>
             <div>
-                <p>Fundo: {ata?.fundo}</p>
+                <p><b>Fundo:</b> {ata?.fundo}</p>
             </div>
             <br/>
             <div>
-                <p>N_Doc: {ata?.n_doc}</p>
+                <p><b>N_Doc:</b> {ata?.n_doc}</p>
             </div>
             <br/>
             <div>
-                <p>Coleção: {ata?.colecao}</p>
+                <p><b>Coleção:</b> {ata?.colecao}</p>
             </div>
             <br/>
             <div>
-                <p>Descrição: {ata?.descricao}</p>
+                <p><b>Descrição:</b> {ata?.descricao}</p>
             </div>
             <br/>
             <div>
-                <p>Observação: {ata?.observacao}</p>
+                <p><b>Observação:</b> {ata?.observacao}</p>
             </div>
             <br/>
             <div>
-                <p>Data_Doc: {ata?.data_doc}</p>
+                <p><b>Data_Doc:</b> {ata?.data_doc}</p>
             </div>
             <br/>
             <div>
-                <p>Folhas: {ata?.folhas}</p>
+                <p><b>Folhas:</b> {ata?.folhas}</p>
             </div>
             <br/>
             <div>
-                <p>Palavras Chave: {ata?.palavras_chave}</p>
+                <p><b>Palavras Chave:</b> {ata?.palavras_chave}</p>
             </div>
             <br/>
             <div>
-                <p>Resumo: {ata?.resumo}</p>
+                <p><b>Resumo:</b> {ata?.resumo}</p>
             </div>
             <br/>
             <div>
-                <p>Condição de Preservação: {ata?.condicao_de_preservacao}</p>
+                <p><b>Condição de Preservação:</b> {ata?.condicao_de_preservacao}</p>
             </div>
             <br/>
             <div>
-                <p>Condição do Documento: {ata?.condicao_documento}</p>
+                <p><b>Condição do Documento:</b> {ata?.condicao_documento}</p>
             </div>
             <br/>
             <div>
-                <p>Pesquisador: {ata?.pesquisador}</p>
+                <p><b>Pesquisador:</b> {ata?.pesquisador}</p>
             </div>
             <br/>
             <div>
-                <p>Data Catalogação: {ata?.data_catalogacao}</p>
+                <p><b>Data Catalogação:</b> {ata?.data_catalogacao}</p>
             </div>
             <br/>
             <div>
-               <p>PDF: 
+               <p><b>PDF:</b> 
                    {ata?.pdf_link != 'N/A' ? 
                    <a href={process.env.REACT_APP_BASE_API + ata?.location + '/' + ata?.pdf_link}>
                     Visualizar
@@ -93,7 +100,7 @@ function View() {
             <br/>
             <div>
                 <p>
-                    Link externo: 
+                    <b>Link externo:</b> 
                     {ata?.ext_link != 'N/A' ? 
                     <a href={ata?.ext_link}>{ata?.ext_link}</a>
                     :    <span>Sem Link Externo</span>

@@ -3,6 +3,7 @@ import {Container, Form, FormGroup, Label, Input, Button} from 'reactstrap';
 
 import api from '../../../services/api';
 import { useHistory, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from '../../../components/Header';
 
 function Update() {
@@ -41,7 +42,13 @@ function Update() {
   return (
       <>
         <Header/>
-        <h1 className="text-center">Atualizar Ata</h1>
+	<div className="back-button">
+            <Link to="/1">
+                <Button color="danger">Voltar para Tela Principal</Button>
+            </Link>
+        </div>
+
+        <h1 className="text-center">Atualizar Documento</h1>
         <Container className="d-flex justify-content-center">
             <Form fluid className="w-50" onSubmit={handleCadastro}>
                 <FormGroup>

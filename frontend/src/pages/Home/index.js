@@ -9,6 +9,7 @@ import Header from '../../components/Header';
 
 function Home(){
     const id = localStorage.getItem('id')
+    const [count, setCount] = useState();
     const [busca, setSearch] = useState();
     const [atas, setAtas] = useState([]);
     const [total, setTotal] = useState();
@@ -19,6 +20,7 @@ function Home(){
        await api.get('/atas/'.concat(page)).then(response => {
            setAtas(response.data.ata)
            setTotal(Math.ceil(response.data.count / 10))
+	   setCount(response.data.count)
        })
     }, []);
 
@@ -48,6 +50,7 @@ function Home(){
                         name="busca"
                         id="busca"
                         onChange={e => setSearch(e.target.value)}
+			required
                     />
                 </FormGroup>
                 <FormGroup className="col-auto pt-4">
@@ -62,6 +65,9 @@ function Home(){
                     </Link>
                 </div>
                 }
+		<div>
+			<p><b>Total de Registros: {count}</b></p>	
+		</div>
                 <Table striped>
                     <thead className="">
                         <tr>
@@ -69,6 +75,7 @@ function Home(){
                         <th>Gestão</th>
                         <th>N_doc</th>
                         <th>Coleção</th>
+			<th>Observação</th>
                         <th>Ações</th>
                         </tr>
                     </thead>
@@ -79,6 +86,7 @@ function Home(){
                         <td>{ata.gestao}</td>
                         <td>{ata.n_doc}</td>
                         <td>{ata.colecao}</td>
+			<td>{ata.observacao}</td>
                         <td>
                                 {id && 
                                 <Link to={`/ata/editar/${ata.id}`}> <MdEdit size={30} color="#2BA8EA"/></Link>

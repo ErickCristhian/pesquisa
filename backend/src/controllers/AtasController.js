@@ -55,12 +55,15 @@ module.exports = {
         const atas = await Ata.findAll({ 
             where: {
                 [Op.or]: [
+		    {id: busca},
                     {resumo: {[Op.like]: "%" + busca + "%"}}, 
                     {palavras_chave: { [Op.like]: "%" + busca + "%"}},
                     {gestao: { [Op.like]: "%" + busca + "%" }},
-                    {id: busca }
+		    {colecao: { [Op.like]: "%" + busca + "%" }},
+		    {observacao: { [Op.like]: "%" + busca + "%" }}
                 ]
-            }
+            },
+	    order: [['id', 'DESC']]
         })
 
         res.json(atas);

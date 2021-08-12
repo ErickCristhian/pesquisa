@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Container, Form, FormGroup, Label, Input, Button} from 'reactstrap';
-
+import { Link } from 'react-router-dom';
 import api from '../../../services/api';
-import { useHistory, useParams } from 'react-router-dom';
 import Header from '../../../components/Header';
+import './style.css';
 
 function Create() {
     const formData = new FormData();
@@ -24,10 +24,7 @@ function Create() {
     const [data_catalogacao, setDataCat] = useState();
     const [pdf_link, setPdfLink] = useState();
     const [ext_link, setExtLink] = useState();
-    
-
-
-    const history = useHistory();
+    const [created, setCreated] = useState();    
 
     async function handleCadastro(e){
         e.preventDefault();
@@ -50,12 +47,16 @@ function Create() {
         formData.append('user_id', user_id)
 
         try {
-          const response = await api.post('ata', formData, {
+          await api.post('ata', formData, {
             headers: {
                 "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
             }
-        });
-          history.push('/')
+        }).then(response => {
+	    setCreated(response.data.success);
+	    document.getElementById('create-form').reset();
+	    window.scrollTo(0, 0);
+	});
+          
         } catch (error) {
           console.log(error)
         }
@@ -63,9 +64,20 @@ function Create() {
   return (
       <>
         <Header/>
-        <h1 className="text-center">Novo Registro</h1>
+        <div className="back-button">
+	    <Link to="/1">
+		<Button color="danger">Voltar para Tela Principal</Button>
+	    </Link>
+	</div>
+	<h1 className="text-center">Novo Documento</h1>
+	{created && 
+	<div className="created">
+	    <p>{created}</p>
+	</div>
+	}
+	
         <Container className="d-flex justify-content-center">
-            <Form fluid className="w-75" onSubmit={handleCadastro}>
+            <Form id="create-form" fluid className="w-75" onSubmit={handleCadastro}>
                <FormGroup>
                     <Label for="gestao">Gestao</Label>
                     <Input 

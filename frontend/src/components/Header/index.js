@@ -35,9 +35,9 @@ function Header() {
   return (
     <div>
       <Navbar dark expand="md">
-      <Link to="/" className="text-decoration-none">
+      <Link to="/1" className="text-decoration-none">
         <NavbarBrand>
-            <h1 className="pt-3 pb-0 ms-4">Pesquisa-OABPE</h1>
+            <h1 className="pt-3 pb-0 ms-4">Acervo Histórico da OAB-PE</h1>
         </NavbarBrand>
       </Link>
         <NavbarToggler onClick={toggle} />
